@@ -12,6 +12,7 @@ class CartPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: white,
         elevation: 0.0,
+        leading: IconButton(onPressed: ()=>Navigator.pop(context), icon:const Icon(Icons.arrow_back_ios, color: black,)),
         title: const Text(
           "Cart Items",
           style: TextStyle(color: black),
@@ -46,12 +47,15 @@ class CartPage extends StatelessWidget {
                       ]),
                   Row(
                     children: [
-                      IconButton(
-                          onPressed: () {},
+                      Consumer<AddToCartNotifier>(builder: (context, item,child){
+                          return IconButton(
+                          onPressed: ()=>item.decrementItem(item.itemsOnCart[index].id),
                           icon: const Icon(
                             Icons.remove,
                             size: 30,
-                          )),
+                            color: red,
+                          ));
+                      }),
                       const SizedBox(
                         width: 10,
                       ),
@@ -67,12 +71,16 @@ class CartPage extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                      IconButton(
-                          onPressed: () {},
+                      Consumer<AddToCartNotifier>(builder: (context, item,child){
+                          return IconButton(
+                          onPressed: ()=>item.incrementItem(item.itemsOnCart[index].id),
                           icon: const Icon(
                             Icons.add,
                             size: 30,
-                          ))
+                            color: green,
+                          ));
+                      }),
+                  
                     ],
                   )
                 ]),

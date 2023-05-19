@@ -42,4 +42,23 @@ class AddToCartNotifier extends ChangeNotifier{
       _totalItems--;
       notifyListeners();
   }
+
+  void incrementItem(int id){
+    for(Item item in _itemsOnCart){
+          if(item.id==id){
+            item.itemCount++;
+            notifyListeners();
+          }
+      }
+  }
+
+    void decrementItem(int id){
+    for(Item item in _itemsOnCart){
+          if(item.id==id){
+            if(item.itemCount==1) return; 
+            item.itemCount--;
+            notifyListeners();
+          }
+      }
+  }
 }

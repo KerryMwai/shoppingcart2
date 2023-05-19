@@ -111,6 +111,7 @@ class MyHomePage extends StatelessWidget {
                     ElevatedButton(
                         key: const Key("addButton"),
                         onPressed: () {
+                          if(nameController.text.isEmpty || descriptionController.text.isEmpty) return;
                           context.read<AddToCartNotifier>().addItem(Item(
                               id: context
                                       .read<AddToCartNotifier>()
