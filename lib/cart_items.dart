@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shoppingcartapp/constants/color.dart';
 import 'package:shoppingcartapp/controller/add_to_cart_notifer.dart';
 
 class CartPage extends StatelessWidget {
@@ -9,33 +10,72 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text("Cart Items"),
+        backgroundColor: white,
+        elevation: 0.0,
+        title: const Text(
+          "Cart Items",
+          style: TextStyle(color: black),
+        ),
         centerTitle: true,
       ),
-
       body: ListView(
-        children: List.generate(context.watch<AddToCartNotifier>().itemsOnCart.length, (index){
+        children: List.generate(
+            context.watch<AddToCartNotifier>().itemsOnCart.length, (index) {
           return Card(
-            
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Consumer<AddToCartNotifier>(builder: (context, value, child) => Text(value.itemsOnCart[index].name, style:const  TextStyle(fontSize: 18),),),
-                    const SizedBox(height: 10,),
-                    Consumer<AddToCartNotifier>(builder: (context, value, child) => Text(value.itemsOnCart[index].description, style:const TextStyle(fontSize: 16),),
-                  ),
-                  ]
-                ),
-               
-                Row(children: [
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.remove, size: 30,)),
-                  const SizedBox(width: 15,),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.add, size: 30,))
-                ],)
-            ]),
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Consumer<AddToCartNotifier>(
+                          builder: (context, value, child) => Text(
+                            value.itemsOnCart[index].name,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Consumer<AddToCartNotifier>(
+                          builder: (context, value, child) => Text(
+                            value.itemsOnCart[index].description,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ]),
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.remove,
+                            size: 30,
+                          )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Consumer<AddToCartNotifier>(
+                        builder: (context, value, child) => Text(
+                          "${value.itemsOnCart[index].itemCount}",
+                          style: const TextStyle(
+                              color: black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.add,
+                            size: 30,
+                          ))
+                    ],
+                  )
+                ]),
           );
         }),
       ),

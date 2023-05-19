@@ -6,13 +6,12 @@ class AddToCartNotifier extends ChangeNotifier{
   final List<Item> _items=[];
   final List<Item> _itemsOnCart=[];
   int _totalItems=0;
-  bool addedToCart=false;
 
 
   UnmodifiableListView<Item> get items=>UnmodifiableListView(_items);
   UnmodifiableListView<Item> get itemsOnCart=>UnmodifiableListView(_itemsOnCart);
   int get totalItems=>_totalItems;
-
+// https://chat.whatsapp.com/LdzXWRyOXJ7CIbc3LwylGL
 
   void addItem(Item item){
     _items.add(item);
