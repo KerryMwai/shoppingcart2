@@ -89,7 +89,7 @@ class MyHomePage extends StatelessWidget {
                     controller: nameController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter product name',
+                      hintText: 'Product name',
                     ),
                   ),
                 ),
@@ -101,7 +101,7 @@ class MyHomePage extends StatelessWidget {
                     controller: descriptionController,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter product description',
+                      hintText: 'Product description',
                     ),
                   ),
                 ),
